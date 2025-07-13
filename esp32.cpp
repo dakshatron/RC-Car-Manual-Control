@@ -50,7 +50,27 @@ int rightPwmOutput;
 // motorID: specifies which motor to power 'pwmOutput' amount
 void pwmControlInput(int pwmOutput, int motorID)
 {
+    if (motorID == leftMotorID) { //go left ya heard 
 
+        if (pwmOutput < 0) { //reverse left 
+            ledcWrite(leftchannel2, -1 * pwmOutput) ; // abs(pwmOutput) passed 
+        }
+
+        else if (pwmOuput > 0) { //forward left 
+            ledcWrite(leftchannel1, pwmOutput) ; 
+        }
+    }
+
+    else if (motorID == rightMotorID) { // go right jit
+
+        if (pwmOutput < 0) { //reverse right 
+            ledcWrite(rightchannel2, -1 * pwmOuptput) ; // abs(pwmOutput) passed
+        }
+
+        else if (pwmOutput > 0) { //forward right
+            ledcWrite(rightchannel1, pwmoutput) ; 
+        }
+    }
 }
 
 
