@@ -52,23 +52,30 @@ void pwmControlInput(int pwmOutput, int motorID)
 {
     if (motorID == leftMotorID) { //go left ya heard 
 
-        if (pwmOutput < 0) { //reverse left 
-            ledcWrite(leftchannel2, -1 * pwmOutput) ; // abs(pwmOutput) passed 
+        if (pwmOutput < 0) 
+        { //reverse left 
+            ledcWrite(leftchannel2, -pwmOutput) ; // abs(pwmOutput) passed 
+            ledcWrite(leftchannel1, 0) ;
         }
 
-        else if (pwmOuput > 0) { //forward left 
+        else
+        {//forward left 
             ledcWrite(leftchannel1, pwmOutput) ; 
+            ledcWrite(leftchannel2, 0) ;
         }
     }
 
     else if (motorID == rightMotorID) { // go right jit
 
         if (pwmOutput < 0) { //reverse right 
-            ledcWrite(rightchannel2, -1 * pwmOuptput) ; // abs(pwmOutput) passed
+            ledcWrite(rightchannel2, -pwmOuptput) ;
+            ledcWrite(rightChannel1, 0) ;  // abs(pwmOutput) passed
         }
 
-        else if (pwmOutput > 0) { //forward right
+        else
+        { //forward right
             ledcWrite(rightchannel1, pwmoutput) ; 
+            ledcWrite(rightchannel2, 0) ;
         }
     }
 }
